@@ -9,7 +9,6 @@ app = socketio.WSGIApp(sio)
 @sio.event
 def connect(sid, environ):
     print('Client connected:', sid)
-    print('Headers:', environ)
 
 @sio.event
 def disconnect(sid):
@@ -19,6 +18,11 @@ def disconnect(sid):
 def message(sid, data):
     print('Message received:', data)
     sio.emit('response', {'data': 'Server received your message'}, room=sid)
+
+@sio.event
+def ping_pong(sid):
+    print('Ping-pong event received from client:', sid)
+    sio.emit('pong', room=sid)  # Send a "pong" message back to the client
 
 # Run the server
 if __name__ == '__main__':

@@ -31,4 +31,5 @@ def pong(sid):
 
 # Run the server
 if __name__ == '__main__':
-    eventlet.wsgi.server(eventlet.listen(('localhost', 5000)), app)
+    # eventlet.wsgi.server(eventlet.listen(('localhost', 5000)), app)
+    eventlet.wsgi.server(eventlet.listen(('0.0.0.0', 5000)), app)

@@ -9,6 +9,7 @@ app = socketio.WSGIApp(sio)
 @sio.event
 def connect(sid, environ):
     print('Client connected:', sid)
+    print('Headers:', environ)
 
 @sio.event
 def disconnect(sid):
